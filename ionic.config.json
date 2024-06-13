@@ -1,0 +1,7 @@
+{
+  "name": "WorkNet",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
