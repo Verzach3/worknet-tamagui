@@ -1,0 +1,15 @@
+ion-radio.mobile::part(container) {
+  width: 40px;
+  height: 40px;
+
+  border: 2px solid #ddd;
+  border-radius: 4px;
+}
+
+ion-radio {
+  --border-radius: 4px;
+  --inner-border-radius: 4px;
+
+  --color: #ddd;
+  height: 40px;
+}

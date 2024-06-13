@@ -1,5 +1,5 @@
 import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import ExploreContainer from '../../components/ExploreContainer';
 import './Tab1.css';
 import { testfunc } from "@/functions/testfunc.telefunc";
 const Tab1: React.FC = () => {
