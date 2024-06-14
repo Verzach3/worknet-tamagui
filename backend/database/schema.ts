@@ -34,7 +34,7 @@ export const userInformation = sqliteTable('user_information', {
 export const profileImage = sqliteTable('profile_image', {
   id: text('id').primaryKey().notNull(),
   urlImage: text('url_image'),
-  profileId: text('profileId').notNull().references(() => profile.id)
+  profileId: text('profileId').references(() => profile.id)
 })
 
 
@@ -45,18 +45,19 @@ export const applyjobs = sqliteTable('applyjobs', {
   cv: text('cv').notNull().default(''),
   more_info: text('more_info'),
   userId: text('user_id').references(() => users.id),
-  jobId: text('job_id')
+  jobId: text('job_id').references(() => jobs.id)
 });
 
 
 export const jobs = sqliteTable('jobs', {
   id: text('id').primaryKey().notNull(),
+  title: text('title').notNull(),
+  company: text('company').notNull(),
   salary: integer('salary').notNull(),
   role: text('role').notNull(),
   place: text('place').notNull(),
   description: text('description').notNull(),
-  job_type: text('type').notNull(),
-  requirements_id: text('requirements_id').notNull(),
+  requirements_id: text('requirements_id').references(() => jobRequirements.id),
   userId: text('user_id').references(()=> users.id)
 });
 
@@ -78,8 +79,8 @@ export const notifications = sqliteTable('notifications', {
   description: text('description').notNull(),
   salary: text('salary').notNull(),
   status: text('status').notNull(),
-  jobId: text('job_id').notNull(),
-  userId: text('userId').notNull(),
+  jobId: text('job_id').notNull().references(() => jobs.id),
+  userId: text('userId').notNull().references(() => users.id),
 })
 
 
@@ -185,6 +186,5 @@ export const notificationsJobsRelations = relations(notifications, ({ one })  =>
     references: [jobs.id]
   })
 }))
-
 
 
