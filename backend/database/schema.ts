@@ -86,7 +86,6 @@ export const notifications = sqliteTable('notifications', {
 // Relations 
 
 
-
 // ------------ User Profile Relations ------------ //
 
 
@@ -97,20 +96,28 @@ export const userRelations = relations(users, ({ one }) => ({
 
 
 // Relation between user and userInformation
-export const userInformationRelation = relations(users, ({ one }) => ({
+export const userInformationRelations = relations(users, ({ one }) => ({
   userInformation: one(userInformation)
 }))
 
 
 // Relation between profile and profileImages
-export const profileImagesRelation = relations(profile, ({ one }) => ({
-  profileImage: one(profileImage)
+export const profileImagesRelations = relations(profile, ({ many }) => ({
+  profileImage: many(profileImage)
+}))
+
+export const imagesProfileRelations = relations(profileImage, ({ one }) => ({
+  profile: one(profile, {
+    fields: [profileImage.profileId],
+    references: [profile.id]
+  })
 }))
 
 
 // ------------ Jobs Relations ------------ //
 
 
+// Relations between jobs and apply jobs
 export const jobsRelation = relations(jobs, ({ many }) => ({
   applyjobs: many(applyjobs)
 }));
@@ -120,9 +127,64 @@ export const applyRelations = relations(applyjobs, ({ one }) => ({
       fields: [applyjobs.jobId],
       references: [jobs.id]
     })
+}));
+
+// Relations between apply job and users
+export const applyJobUserRelations = relations(users, ({ many }) => ({
+  apply: many(applyjobs)
+}))
+
+export const usersApplyJobRelations = relations(applyjobs, ({ one }) => ({
+  users: one(users, {
+    fields: [applyjobs.userId],
+    references: [users.id]
+  })
+}));
+
+// Relations between jobs requirements and jobs
+export const jobsRequirementsRelations = relations(jobs, ({ one }) => ({
+  requirements: one(jobRequirements)
+}))
+
+// Relations between user and jobs
+export const jobsUserRelations = relations(users, ({ many }) => ({
+  create: many(jobs) 
+}))
+
+export const userJobsRelations = relations(jobs, ({ one }) => ({
+  users: one(users, {
+    fields: [jobs.userId],
+    references: [users.id]
+  })
 }))
 
 
+// ------------ Notifications Relations ------------ //
+
+
+// Relations between user and notifications
+export const notificationsUserRelations =  relations(users, ({ many }) => ({
+  notification: many(notifications)
+}))
+
+export const userNotificationsRelations = relations(notifications, ({ one }) => ({
+  user: one(users, {
+    fields: [notifications.userId],
+    references: [users.id]
+  })
+}));
+
+// Relations between jobs and notifications
+export const jobsNotificationsRelations = relations(jobs, ({ many }) => ({
+  notification: many(notifications)
+}))
+
+export const notificationsJobsRelations = relations(notifications, ({ one })  => ({ 
+  job: one(jobs, {
+    fields: [notifications.jobId],
+    references: [jobs.id]
+  })
+}))
 
 
 
