@@ -37,6 +37,8 @@ import './theme/variables.css';
 import HomeIndex from './pages/home/Index';
 import StartQuestionsIndex from './pages/start-questions/Index';
 import UserProfile from './pages/create-user-profile/UserProfile';
+import Login from './pages/login/Login';
+import Register from './pages/register/Register'
 
 setupIonicReact();
 
@@ -51,6 +53,12 @@ const App: React.FC = () => (
       </Route>
       <Route path="/home">
         <HomeIndex/>
+      </Route>
+      <Route path="/login">
+        <Login/>
+      </Route>
+      <Route path="/register">
+        <Register/>
       </Route>
     </IonReactRouter>
   </IonApp>

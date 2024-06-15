@@ -1,0 +1,33 @@
+#title02 {
+  font-weight: bold;
+  margin-bottom: 10vh; 
+}
+
+.ion-padding {
+  padding: 16px;
+}
+
+.ion-margin-top {
+  margin-top: 24px; 
+}
+
+.ion-text-center {
+  text-align: center;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+a {
+  color: #3880ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
