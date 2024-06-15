@@ -1,0 +1,32 @@
+.selected {
+  background-color: #e0f7fa; /* Color de fondo para elementos seleccionados */
+}
+
+.selected ion-checkbox::part(container) {
+  background-color: #387ef5; /* Color de fondo del checkbox seleccionado */
+}
+
+ion-checkbox::part(container) {
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+}
+
+ion-item {
+  --inner-padding-start: 8px;
+  --padding-end: 8px;
+  --highlight-background: #e0f7fa;
+}
+
+ion-button {
+  --background: #3880ff;
+  --background-activated: #3171e0;
+  --background-focused: #3171e0;
+  --background-hover: #3171e0;
+  --border-radius: 8px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  margin: 16px;
+}
+
